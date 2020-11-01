@@ -52,15 +52,12 @@ for a in range(1, ll + 1):
         if it[b] == it[b + 1] or it[b + 1] == 'w':
             c = c + 1
             it[b + 1] = it[b]
-            print("inc c")
         if it[b] != it[b + 1] or b == ll - 2:
-            print('b:',b)
-            print(it)
-            print("c:",c)
             nums.append(c)
             c = 1
 
         isw = False
+
     if it[0] == 'b' and dotest == True:
         isw = False
     if it[0] == 'r' and dotest == True:
@@ -68,15 +65,13 @@ for a in range(1, ll + 1):
         isw = True
 
         nums.append(0)
-        print("ran r")
-        print("0 added")
+        print(it)
         it = jt[:]
         c = 1
 
         continue
+    print(it)
     nums.append(0)
-    print("0 added")
-
     it = jt[:]
     c = 1
 
