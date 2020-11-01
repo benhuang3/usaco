@@ -27,27 +27,14 @@ jt = it[:]
 nums = []
 final = 0
 temp = 0
-isw = False
-dotest = False
-t = 1
 
-# forward
+
+
+# forward red
 for a in range(1, ll + 1):
     for b in range(0, ll - 1):
         if it[b] == 'w' and b == 0:
-            isw = True
-            dotest = True
-
-        if isw == True:
-            if t == 1:
-                it[b] = 'r'
-                t = t + 1
-                # print("set r")
-
-            elif t == 2:
-                it[b] = 'b'
-                t = t + 1
-                # print("set p")
+            it[b] = 'r'
 
         if it[b] == it[b + 1] or it[b + 1] == 'w':
             c = c + 1
@@ -56,37 +43,41 @@ for a in range(1, ll + 1):
             nums.append(c)
             c = 1
 
-        isw = False
-
-    if it[0] == 'b' and dotest == True:
-        isw = False
-    if it[0] == 'r' and dotest == True:
-        a = a - 1
-        isw = True
-
-        nums.append(0)
-        print(it)
-        it = jt[:]
-        c = 1
-
-        continue
-    print(it)
+    #print(it)
     nums.append(0)
     it = jt[:]
     c = 1
 
+    it = it[a:] + it[0:a]
 
-    dotest = False
-    t = 1
+it = jt[:]
+# forward blue
+for a in range(1, ll + 1):
+    for b in range(0, ll - 1):
+        if it[b] == 'w' and b == 0:
+            it[b] = 'b'
+
+        if it[b] == it[b + 1] or it[b + 1] == 'w':
+            c = c + 1
+            it[b + 1] = it[b]
+        if it[b] != it[b + 1] or b == ll - 2:
+            nums.append(c)
+            c = 1
+
+    #print(it)
+    nums.append(0)
+    it = jt[:]
+    c = 1
+
     it = it[a:] + it[0:a]
 
 # find most one
-print(nums)
+#print(nums)
 for d in range(0, len(nums) - 1):
     temp = nums[d] + nums[d + 1]
 
     if temp > final:
-        # print(nums[d], nums[d + 1])
+        # #print(nums[d], nums[d + 1])
         final = temp
 
 
